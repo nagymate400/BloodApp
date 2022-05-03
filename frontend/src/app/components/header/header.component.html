@@ -1,0 +1,50 @@
+<mat-toolbar color="warn">
+  <span> <a routerLink="">Blood Donation</a></span>
+  <ul>
+    <li>
+      <a mat-button routerLink="/donationplaces" routerLinkActive="mat-accent"
+        >Donation Places</a
+      >
+    </li>
+    <li>
+      <a mat-button routerLink="/donations" routerLinkActive="mat-accent"
+        >Donations</a
+      >
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <a
+        mat-button
+        routerLink="/newdonationplaces"
+        routerLinkActive="mat-accent"
+        >Create Donation Place</a
+      >
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <a
+        mat-button
+        routerLink="/createnewdoctor"
+        routerLinkActive="mat-accent"
+        >Create Doctor</a
+      >
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/createnewdonor" routerLinkActive="mat-accent"
+        >Create Donor</a
+      >
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/newdonation" routerLinkActive="mat-accent"
+        >Create Donation</a
+      >
+    </li>
+  </ul>
+  <span class="spacer"></span>
+  <ul>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </li>
+  </ul>
+</mat-toolbar>

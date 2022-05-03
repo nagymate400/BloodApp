@@ -1,0 +1,11 @@
+mat-form-field,
+textarea,
+mat-select{
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.mat-raised-button{
+  margin-top: 2rem;
+}
+

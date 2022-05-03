@@ -1,0 +1,117 @@
+<mat-card>
+  <form [formGroup]="form" (submit)="onSaveNewDonor()">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="name"
+        placeholder="Donor name"
+      />
+      <mat-error *ngIf="form.get('name').invalid"
+        >Please enter the donor name (minimum 5, maximum 50
+        character)</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Sex</mat-label>
+      <mat-select formControlName="sex" required>
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+        <mat-option value="other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="nationality"
+        placeholder="The donor nationality name"
+      />
+      <mat-error *ngIf="form.get('nationality').invalid"
+        >Please enter the donor nationality name (minimum 5, maximum 50 character) </mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="birth_place"
+        placeholder="The donor birth place"
+      />
+      <mat-error *ngIf="form.get('birth_place').invalid"
+        >Please enter the donor birth place name (minimum 5, maximum 50 character) </mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="date"
+        formControlName="birth_time"
+        placeholder="The donor birthday"
+      />
+      <mat-error *ngIf="form.get('birth_time').invalid"
+        >Please enter the birth time of the donor (age minimum 18 year) </mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        formControlName="postcode"
+        placeholder="Enter the donor postcode"
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        maxlength="4"
+      />
+      <mat-error *ngIf="form.get('postcode').invalid"
+        >Please enter a valid postcode</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="town"
+        placeholder="Enter the donor town"
+      />
+      <mat-error *ngIf="form.get('town').invalid"
+        >Please enter a valid town (minimum 2, maximum 50 character)</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="address"
+        placeholder="Enter the donor address"
+      />
+      <mat-error *ngIf="form.get('address').invalid"
+        >Please enter a valid address (minimum 5, maximum 50 character)</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="taj_code"
+        placeholder="Enter the donor taj code"
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        maxlength="9"
+      />
+      <mat-error *ngIf="form.get('taj_code').invalid"
+        >Please enter a valid taj code</mat-error
+      >
+    </mat-form-field>
+
+
+
+    <button mat-raised-button color="accent" type="submit">Save Donor</button>
+  </form>
+</mat-card>

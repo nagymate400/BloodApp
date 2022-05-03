@@ -1,0 +1,54 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Create a new doctor</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (submit)="onSaveNewDoctor(signup)" #signup="ngForm">
+      <mat-form-field>
+        <input
+          matInput
+          type="email"
+          name="email"
+          ngModel
+          placeholder="Email Addres"
+          #emailInput="ngModel"
+          required
+          email
+        />
+        <mat-error *ngIf="emailInput.invalid"
+          >"Please enter valid email"</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          name="username"
+          ngModel
+          placeholder="Username"
+          #usernameInput="ngModel"
+          required
+          username
+        />
+        <mat-error *ngIf="usernameInput.invalid"
+          >"Please enter valid username"</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          type="password"
+          name="password"
+          ngModel
+          #passwordInput="ngModel"
+          matInput
+          placeholder="Password"
+          required
+        />
+        <mat-error *ngIf="passwordInput.invalid"
+          >"Please enter valid password"</mat-error
+        >
+      </mat-form-field>
+      <button mat-raised-button color="accent" type="submit">Signup</button>
+    </form>
+  </mat-card-content>
+</mat-card>

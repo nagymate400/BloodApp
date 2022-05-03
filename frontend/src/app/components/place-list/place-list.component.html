@@ -1,0 +1,28 @@
+<div *ngFor="let element of donationPlaceElements">
+  <mat-card
+    [ngClass]="
+      element.active
+        ? 'place-active formated-card'
+        : 'place-inactive formated-card'
+    "
+  >
+    <mat-card-title>{{ element.name }}</mat-card-title>
+    <mat-card-content>
+      <p><strong>Postcode:</strong> {{ element.postcode }}</p>
+      <p><strong>Town:</strong> {{ element.town }}</p>
+      <p><strong>Address:</strong> {{ element.address }}</p>
+    </mat-card-content>
+    <mat-card-actions *ngIf="userIsAuthenticated">
+      <p>
+        Set the place status:
+        <button
+          (click)="onActiveStatusChange(element)"
+          mat-raised-button
+          [color]="element.active ? 'primary' : 'warn'"
+        >
+          {{ element.active }}
+        </button>
+      </p>
+    </mat-card-actions>
+  </mat-card>
+</div>

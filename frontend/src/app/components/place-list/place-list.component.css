@@ -1,0 +1,14 @@
+.place-active{
+  margin: 2rem;
+  background-color:hsl(4, 90%, 58%)
+}
+
+.place-inactive{
+  margin: 2rem;
+  background-color:rgb(185, 169, 169)
+}
+
+.formated-card{
+  max-width: 400px;
+  float: left;
+}

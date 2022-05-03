@@ -1,0 +1,64 @@
+<mat-card>
+  <form [formGroup]="form" (submit)="onSaveNewPlace()">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="name"
+        placeholder="Place name"
+      />
+      <mat-error *ngIf="form.get('name').invalid"
+        >Please enter the place name (minimum 3, maximum 50
+        character)</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        formControlName="postcode"
+        placeholder="Enter the postcode"
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        maxlength="4"
+      />
+      <mat-error *ngIf="form.get('postcode').invalid"
+        >Please enter a valid postcode</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="town"
+        placeholder="Enter the town"
+      />
+      <mat-error *ngIf="form.get('town').invalid"
+        >Please enter a valid town</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="address"
+        placeholder="Enter the address"
+      />
+      <mat-error *ngIf="form.get('address').invalid"
+        >Please enter a valid address</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Place active</mat-label>
+      <mat-select formControlName="active" required>
+        <mat-option [value]="true">Active</mat-option>
+        <mat-option [value]="false">Inactive</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" type="submit">Save Place</button>
+  </form>
+</mat-card>

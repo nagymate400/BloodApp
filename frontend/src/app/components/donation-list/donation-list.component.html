@@ -1,0 +1,62 @@
+<div>
+
+  <mat-form-field class="input">
+    <mat-label>Search for donor name:</mat-label>
+    <input matInput type="text" placeholder="Donor name" [(ngModel)]="searchInputName" value="">
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <input  matInput type="date" placeholder="Start date"  [(ngModel)]="searchInputInDate" value="">
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <input matInput type="date" placeholder="End date"  [(ngModel)]="searchInputOutDate" value="">
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <mat-label>Select donation place</mat-label>
+    <mat-select  [(ngModel)]="searchInputPlace" value="">
+      <ng-container *ngFor="let place of donationPlaceElements">
+        <mat-option [value]="place.name">{{place.name}}</mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+
+  <button  (click)="onSearch()" mat-raised-button color="accent">Search</button>
+
+</div>
+
+
+<div class="accordion-field" *ngIf="!successfulSearch">
+  <mat-accordion *ngFor="let element of donationElements" >
+    <mat-expansion-panel *ngIf="element.success_donation"  [ngClass]="element.directed_donation ? 'directed formated-card' : 'notdirected formated-card'">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <strong>Id: {{element.donation_id}}&emsp;</strong><strong>Name: </strong>{{ element.donor_id_fk.name }}&emsp;<strong>Donation date: </strong>  {{dateFormater(element.donation_date.toString()).toLocaleDateString("en-ZA") }}
+        </mat-panel-title>
+        <mat-panel-description>
+
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p *ngIf="element.directed_donation">Directed name: {{element.directed_name}}</p>
+      <p>Donation Place: {{element.donationPlace_id_fk.name}}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+  </div>
+
+  <div class="accordion-field" *ngIf="successfulSearch">
+    <mat-accordion *ngFor="let element of searchedElements">
+      <mat-expansion-panel  *ngIf="element.success_donation" [ngClass]="element.directed_donation ? 'directed formated-card' : 'notdirected formated-card'">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <strong>Id: {{element.donation_id}}&emsp;</strong><strong>Name: </strong>{{ element.donor_id_fk.name }}&emsp;<strong>Donation date: </strong>  {{dateFormater(element.donation_date.toString()).toLocaleDateString("en-ZA") }}
+          </mat-panel-title>
+          <mat-panel-description>
+
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p *ngIf="element.directed_donation">Directed name: {{element.directed_name}}</p>
+        <p>Donation Place: {{element.donationPlace_id_fk.name}}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+    </div>
